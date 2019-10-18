@@ -12,8 +12,8 @@
     <artifactId>services</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>products-service</module>
         <module>users-service</module>
+        <module>products-service</module>
     </modules>
 
 
