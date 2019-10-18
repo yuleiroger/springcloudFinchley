@@ -5,6 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.eureka.server.event.*;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import sun.util.calendar.BaseCalendar;
+
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by yulei on 2019/4/6.
@@ -14,27 +18,31 @@ import org.springframework.stereotype.Component;
 public class EurekaStateChangeListener {
     @EventListener
     public void listen(EurekaInstanceCanceledEvent event) {
-        log.info(event.getServerId() + "\t" + event.getAppName() + " 服务下线");
+        // 服务断线事件
+        String appName = event.getAppName();
+        String serverId = event.getServerId();
+        Objects.requireNonNull(appName, "服务名不能为空!");
+        log.info(">>>>>>> 服务:{}，{}下线，下线时间{}", serverId, appName, new Date());
     }
 
     @EventListener
     public void listen(EurekaInstanceRegisteredEvent event) {
         InstanceInfo instanceInfo = event.getInstanceInfo();
-        log.info(instanceInfo.getAppName() + "进行注册");
+        log.info("{}进行注册,注册时间{}", instanceInfo.getAppName(), new Date());
     }
 
     @EventListener
     public void listen(EurekaInstanceRenewedEvent event) {
-        log.info(event.getServerId() + "\t" + event.getAppName() + " 服务进行续约");
+        //log.info(event.getServerId() + "\t" + event.getAppName() + " 服务进行续约");
     }
 
     @EventListener
     public void listen(EurekaRegistryAvailableEvent event) {
-        log.info("注册中心 启动");
+        log.info("注册中心启动");
     }
 
     @EventListener
     public void listen(EurekaServerStartedEvent event) {
-        log.info("Eureka Server 启动");
+        log.info("Eureka Server启动");
     }
 }
