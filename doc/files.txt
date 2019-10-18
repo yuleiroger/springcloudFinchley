@@ -9,3 +9,5 @@ step1进入一个mongo
 step2 cfg={_id:"testrs", members:[ {_id:0,host:'192.168.100.129:27017',priority:2}, {_id:1,host:'192.168.100.129:27018',priority:1},
 {_id:2,host:'192.168.100.129:27019',arbiterOnly:true}] };
 step3 rs.initiate(cfg)             #使配置生效
+5.mysql mycat
+https://blog.csdn.net/leonpenn/article/details/77278360
