@@ -18,6 +18,7 @@
         <module>mq-server</module>
         <module>redis-server</module>
         <module>zuul-server</module>
+        <module>services</module>
     </modules>
 
     <properties>
@@ -66,9 +67,6 @@
             <artifactId>spring-boot-starter-jetty</artifactId>
             <version>2.1.4.RELEASE</version>
         </dependency>
-
-
-
     </dependencies>
 
 
