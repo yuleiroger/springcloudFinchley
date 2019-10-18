@@ -1,0 +1,31 @@
+
+###配置路由的服务
+zuul:
+  retryable: true
+  ratelimit:
+    enabled: true
+    repository: redis
+    behind-proxy: true
+    default-policy:
+      limit: 500
+      quota: 4
+      refresh-interval: 10
+      type: url
+
+
+
+##断路器超时时间10S
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          timeoutInMilliseconds: 10000
+
+logging:
+  path: /opt/pipeline/logs/gateway
+  config: classpath:logback-spring.xml
+
+
+
+

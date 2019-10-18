@@ -17,6 +17,7 @@
         <module>eureka-server3</module>
         <module>mq-server</module>
         <module>redis-server</module>
+        <module>zuul-server</module>
     </modules>
 
     <properties>
