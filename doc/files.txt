@@ -3,3 +3,9 @@
 https://www.itread01.com/content/1549491675.html
 3.spring boot banner generate
 http://patorjk.com/software/taag/#p=display&f=Big&t=products-service%20
+4.mongodb cluster
+https://blog.csdn.net/luonanqin/article/details/8497860
+step1进入一个mongo
+step2 cfg={_id:"testrs", members:[ {_id:0,host:'192.168.100.129:27017',priority:2}, {_id:1,host:'192.168.100.129:27018',priority:1},
+{_id:2,host:'192.168.100.129:27019',arbiterOnly:true}] };
+step3 rs.initiate(cfg)             #使配置生效
