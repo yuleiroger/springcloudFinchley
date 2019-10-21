@@ -21,4 +21,7 @@ public class MongoProducts implements Serializable{
     @NotNull
     @Field("product_name")
     private String productName;
+
+    @Field("_id")
+    private String id;
 }

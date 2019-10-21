@@ -17,9 +17,33 @@ public class ProductsController {
     @GetMapping(value = "/saveProducts")
     public String products(){
         MongoProducts products = new MongoProducts();
-        products.setProductNo("001");
-        products.setProductName("书");
+        products.setProductNo("002");
+        products.setProductName("数据库入门与实践");
         mongoProductService.saveMongoProduct(products);
         return "products success";
+    }
+
+    @GetMapping(value = "/queryProducts")
+    public String queryMongoProducts(){
+        mongoProductService.queryMongoProducts();
+        return "query success";
+    }
+
+    @GetMapping(value = "/queryProductLike")
+    public String queryMongoProductsLike(){
+        mongoProductService.queryProductLike("数据");
+        return "query success";
+    }
+
+    @GetMapping(value = "/remove")
+    public String remove(){
+        mongoProductService.remove();
+        return "remove success";
+    }
+
+    @GetMapping(value = "/update")
+    public String update(){
+        mongoProductService.update();
+        return "update success";
     }
 }
