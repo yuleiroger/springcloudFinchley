@@ -1,13 +1,23 @@
 1.http://www.mkeeper.club/page/2/
+
 2.about maven package fail
 https://www.itread01.com/content/1549491675.html
+
 3.spring boot banner generate
 http://patorjk.com/software/taag/#p=display&f=Big&t=products-service%20
+
 4.mongodb cluster
 https://blog.csdn.net/luonanqin/article/details/8497860
-step1进入一个mongo
-step2 cfg={_id:"testrs", members:[ {_id:0,host:'192.168.100.129:27017',priority:2}, {_id:1,host:'192.168.100.129:27018',priority:1},
+step1 start up every mongo step by step
+./mongod -f /opt/mongodb/mongodb-cluster/conf/master.conf
+
+step2进入一个mongo
+./mongo 192.168.100.129:27107
+step3 cfg={_id:"testrs", members:[ {_id:0,host:'192.168.100.129:27017',priority:2}, {_id:1,host:'192.168.100.129:27018',priority:1},
 {_id:2,host:'192.168.100.129:27019',arbiterOnly:true}] };
-step3 rs.initiate(cfg)             #使配置生效
+step4 rs.initiate(cfg)             #使配置生效
+step5验证rs.status()
+
 5.mysql mycat
 https://blog.csdn.net/leonpenn/article/details/77278360
+https://blog.csdn.net/u010343544/article/details/78249887
