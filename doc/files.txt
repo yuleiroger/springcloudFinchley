@@ -12,7 +12,7 @@ step1 start up every mongo step by step
 ./mongod -f /opt/mongodb/mongodb-cluster/conf/master.conf
 
 step2进入一个mongo
-./mongo 192.168.100.129:27107
+./mongo 192.168.100.129:27017
 step3 cfg={_id:"testrs", members:[ {_id:0,host:'192.168.100.129:27017',priority:2}, {_id:1,host:'192.168.100.129:27018',priority:1},
 {_id:2,host:'192.168.100.129:27019',arbiterOnly:true}] };
 step4 rs.initiate(cfg)             #使配置生效
