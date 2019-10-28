@@ -42,6 +42,17 @@ public class LogServiceImpl implements LogService{
                 rabbitmqSender.send(msg);
             }
         });
+
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+        for(int i = 0; i < 5; i++){
+            fixedThreadPool.execute(new Runnable() {
+                @Override
+                public void run() {
+                    rabbitmqSender.send(msg);
+                }
+            });
+        }
+
         //save data to redis
         TbUsers users = new TbUsers();
         users.setUuid(StringUtil.getUUID());
