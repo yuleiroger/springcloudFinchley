@@ -1,10 +1,14 @@
 package com.roger.springcloudFinchley.api;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.roger.springcloudFinchley.entity.TbUsers;
 import com.roger.springcloudFinchley.service.LogService;
 import com.roger.springcloudFinchley.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,5 +53,29 @@ public class UsersController {
     public String findRedisList(){
         logService.findRedisList("tb_users", 0L, -1L);
         return "login success";
+    }
+
+    @HystrixCommand(fallbackMethod = "error", commandProperties = {
+            @HystrixProperty(name="execution.isolation.strategy", value = "THREAD"),
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "40")
+    }, threadPoolProperties = {
+            @HystrixProperty(name = "coreSize", value = "1"),
+            @HystrixProperty(name = "maxQueueSize", value = "10"),
+            @HystrixProperty(name = "keepAliveTimeMinutes", value = "1000"),
+            @HystrixProperty(name = "queueSizeRejectionThreshold", value = "8"),
+            @HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "12"),
+            @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "1440")
+    })
+    @RequestMapping(value = "/hello",method = {RequestMethod.GET})
+    public String hello() throws Exception{
+        //int i = 1/0;
+        Thread.sleep(3000);
+        return "Welcome Hystrix";
+    }
+
+    public String error() {
+        return "Request fails. It takes long time to response";
     }
 }
