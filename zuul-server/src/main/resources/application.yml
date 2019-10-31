@@ -1,5 +1,5 @@
 
-###配置路由的服务
+###限流
 zuul:
   retryable: true
   ratelimit:
