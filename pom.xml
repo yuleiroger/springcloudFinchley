@@ -19,6 +19,7 @@
         <module>redis-server</module>
         <module>zuul-server</module>
         <module>services</module>
+        <module>core-java</module>
     </modules>
 
     <properties>
