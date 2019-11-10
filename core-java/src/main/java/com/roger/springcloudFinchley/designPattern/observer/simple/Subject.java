@@ -1,4 +1,4 @@
-package com.roger.springcloudFinchley.designPattern.observer;
+package com.roger.springcloudFinchley.designPattern.observer.simple;
 
 import java.util.Vector;
 
