@@ -12,7 +12,9 @@ zuul:
       refresh-interval: 10
       type: url
 
-
+users-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.roger.springcloudFinchley.rules.CustomRule
 
 
 

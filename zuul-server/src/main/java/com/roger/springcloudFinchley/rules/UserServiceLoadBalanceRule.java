@@ -5,14 +5,16 @@ import com.netflix.loadbalancer.AbstractLoadBalancerRule;
 import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.Server;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by admin on 2019/8/27.
  */
+@Component
 @Slf4j
-public class CustomRule extends AbstractLoadBalancerRule {
+public class UserServiceLoadBalanceRule extends AbstractLoadBalancerRule {
 
     /**
      * 总共被调用的次数，目前要求每台被调用4次
