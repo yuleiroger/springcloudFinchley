@@ -71,7 +71,7 @@ public class UsersController {
     @RequestMapping(value = "/hello",method = {RequestMethod.GET})
     public String hello() throws Exception{
         //int i = 1/0;
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
         return "Welcome Hystrix";
     }
 
