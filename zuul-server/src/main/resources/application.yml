@@ -16,8 +16,6 @@ users-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.roger.springcloudFinchley.rules.BasicLoadBalanceRule
 
-
-
 logging:
   path: /opt/pipeline/logs/gateway
   config: classpath:logback-spring.xml
