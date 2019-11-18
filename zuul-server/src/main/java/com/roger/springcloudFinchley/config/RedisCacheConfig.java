@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.roger.springcloudFinchley.component.RedisProperties;
+import com.roger.springcloudFinchley.util.DesEncryptUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         sentinelConfig.setSentinels(sentinels);
         sentinelConfig.setDatabase(redisProperties.getDatabase());
         log.info("redis password ====:{}",redisProperties.getPassword());
-        sentinelConfig.setPassword(RedisPassword.of(redisProperties.getPassword())); //redis 密码
+        String password = DesEncryptUtils.decrypt(redisProperties.getPassword());
+        sentinelConfig.setPassword(RedisPassword.of(password)); //redis 密码
         return sentinelConfig;
     }
 
@@ -77,7 +79,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         standConfig.setHostName(redisProperties.getHost());
         standConfig.setPort(redisProperties.getPort());
         standConfig.setDatabase(redisProperties.getDatabase());
-        standConfig.setPassword(RedisPassword.of(redisProperties.getPassword()));  //redis 密码
+        String password = DesEncryptUtils.decrypt(redisProperties.getPassword());
+        standConfig.setPassword(RedisPassword.of(password));  //redis 密码
         return standConfig;
     }
 
