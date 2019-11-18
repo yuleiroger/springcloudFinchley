@@ -14,7 +14,7 @@ zuul:
 
 users-service:
   ribbon:
-    NFLoadBalancerRuleClassName: com.roger.springcloudFinchley.rules.CustomRule
+    NFLoadBalancerRuleClassName: com.roger.springcloudFinchley.rules.BasicLoadBalanceRule
 
 
 
