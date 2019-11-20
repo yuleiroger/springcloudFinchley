@@ -14,12 +14,13 @@ import java.util.List;
  */
 @Component
 @Slf4j
-public class UserServiceLoadBalanceRule extends AbstractLoadBalancerRule {
+public class BasicLoadBalanceRule extends AbstractLoadBalancerRule {
 
     /**
      * 总共被调用的次数，目前要求每台被调用4次
      */
     private int total = 0;
+
     /**
      * 当前提供服务列表的索引
      */

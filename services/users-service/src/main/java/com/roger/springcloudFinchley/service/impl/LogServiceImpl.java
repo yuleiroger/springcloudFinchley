@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -30,7 +29,7 @@ public class LogServiceImpl implements LogService{
     private MongoUserDao mongoUserDao;
 
     @Autowired
-    private RedisUtil redisUtil;
+    private RedisUtil userServiceRedisUtil;
 
     @Override
     public TbUsers saveLog(String msg) throws Exception {
@@ -59,7 +58,7 @@ public class LogServiceImpl implements LogService{
         users.setPassword(MD5Util.md5Encode("123"));
         users.setStatus("1");
         users.setUserName(StringUtil.getRandomString(4));
-        redisUtil.setList("tb_users",users, 60L);
+        userServiceRedisUtil.setList("tb_users",users, 60L);
         return users;
     }
 
@@ -71,7 +70,7 @@ public class LogServiceImpl implements LogService{
 
     @Override
     public List findRedisList(String key, long begin, long end) {
-        List list = redisUtil.getList(key, begin, end);
+        List list = userServiceRedisUtil.getList(key, begin, end);
         log.info("list size:{}", list.size());
         for(int i = 0; i < list.size(); i++){
             log.info(list.get(i) + "");
@@ -81,6 +80,6 @@ public class LogServiceImpl implements LogService{
 
     @Override
     public void removeFromRedisList(String key, Object object) {
-        redisUtil.removeFromList(key, object);
+        userServiceRedisUtil.removeFromList(key, object);
     }
 }
