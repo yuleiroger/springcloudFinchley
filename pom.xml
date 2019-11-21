@@ -13,8 +13,6 @@
         <module>admin-server</module>
         <module>eureka-server</module>
         <module>eureka-server1</module>
-        <module>eureka-server2</module>
-        <module>eureka-server3</module>
         <module>mq-server</module>
         <module>redis-server</module>
         <module>zuul-server</module>
