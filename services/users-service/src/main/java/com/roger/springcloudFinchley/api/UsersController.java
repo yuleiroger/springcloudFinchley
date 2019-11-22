@@ -31,6 +31,8 @@ public class UsersController {
         String userNo = request.getParameter("userNo");
         log.info("parameter user_no is:{}", userNo);
         TbUsers user = logService.saveLog("msg");
+        HttpSession session = request.getSession();
+        session.setAttribute("user", userNo);
         return StringUtil.javabeanToJson(user);
     }
 

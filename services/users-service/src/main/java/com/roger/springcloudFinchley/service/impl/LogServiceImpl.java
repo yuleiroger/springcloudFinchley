@@ -30,8 +30,7 @@ public class LogServiceImpl implements LogService{
     private MongoUserDao mongoUserDao;
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
-    private RedisUtil userServiceRedisUtil = new RedisUtil(redisTemplate);
+    private RedisUtil userServiceRedisUtil;
 
     @Override
     public TbUsers saveLog(String msg) throws Exception {

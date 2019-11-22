@@ -21,8 +21,6 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class GatewayFilter extends ZuulFilter implements Filter{
-    @Autowired
-    private RedisUtil zuulRedisUtil;
 
     @Override
     public String filterType() {
