@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -20,8 +21,6 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class GatewayFilter extends ZuulFilter implements Filter{
-    @Autowired
-    private RedisUtil zuulRedisUtil;
 
     @Override
     public String filterType() {
@@ -40,6 +39,11 @@ public class GatewayFilter extends ZuulFilter implements Filter{
     public Object run() throws ZuulException {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+        HttpSession session = request.getSession();
+        Object userNoObj = session.getAttribute("user");
+        if(userNoObj != null){
+            log.info("session attribute=={}", userNoObj.toString());
+        }
         String ip = getIpAddr(request);
         String uri = request.getRequestURI();
 //        Set<String> keys = redisUtil.getKeys();
