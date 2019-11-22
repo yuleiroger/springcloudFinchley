@@ -3,7 +3,7 @@ package com.roger.springcloudFinchley.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.roger.springcloudFinchley.component.RedisProperties;
+import com.roger.springcloudFinchley.compnent.RedisProperties;
 import com.roger.springcloudFinchley.util.DesEncryptUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
@@ -62,8 +62,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         }
         sentinelConfig.setSentinels(sentinels);
         sentinelConfig.setDatabase(redisProperties.getDatabase());
-        log.info("redis password ====:{}",redisProperties.getPassword());
         String password = DesEncryptUtils.decrypt(redisProperties.getPassword());
+        log.info("redis password ====:{}",password);
         sentinelConfig.setPassword(RedisPassword.of(password)); //redis 密码
         return sentinelConfig;
     }
@@ -120,7 +120,7 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         LettuceConnectionFactory factory;
-        log.info("redisProperties ====={}", redisProperties);
+        //log.info("redisProperties ====={}", redisProperties);
         if (redisProperties.getCluster()) {
             factory = new LettuceConnectionFactory(redisSentinelConfiguration, lettuceClientConfiguration);
         } else {
