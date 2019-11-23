@@ -129,7 +129,6 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         return factory;
     }
 
-
     @Bean
     @ConditionalOnMissingBean(name = "redisTemplate")
     public RedisTemplate<String, Object> redisTemplate() {
