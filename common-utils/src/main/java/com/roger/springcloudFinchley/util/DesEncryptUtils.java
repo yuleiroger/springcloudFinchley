@@ -128,7 +128,7 @@ public class DesEncryptUtils {
 
 
     public static void main(String[] args) {
-        String plaintext = "yulei";
+        String plaintext = "123456";
 
         System.out.println("加密前:" + plaintext);
 

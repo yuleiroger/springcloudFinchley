@@ -15,6 +15,7 @@ public class OrdersController {
     @GetMapping(value = "getOrder")
     public Object getOrder(HttpServletRequest request){
         HttpSession session = request.getSession();
+        session.setAttribute("user","sessionValue");
         return session.getAttribute("user");
     }
 }
