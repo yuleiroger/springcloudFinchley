@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 /**
  * Created by admin on 2019/10/22.
@@ -12,10 +13,17 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class OrdersController {
 
-    @GetMapping(value = "getOrder")
-    public Object getOrder(HttpServletRequest request){
+    @GetMapping(value = "setSession")
+    public Object setSession(HttpServletRequest request){
         HttpSession session = request.getSession();
-        session.setAttribute("user","sessionValue");
-        return session.getAttribute("user");
+        String sessionValue = UUID.randomUUID().toString();
+        session.setAttribute("sessionValue",sessionValue);
+        return sessionValue;
     }
+
+    @GetMapping(value = "getSession")
+    public String getSession(){
+        return "success";
+    }
+
 }
