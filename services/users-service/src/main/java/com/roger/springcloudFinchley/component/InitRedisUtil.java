@@ -1,4 +1,4 @@
-package com.roger.springcloudFinchley.compnent;
+package com.roger.springcloudFinchley.component;
 
 import com.roger.springcloudFinchley.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,8 @@ public class InitRedisUtil {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-    @Bean("zuulRedisUtil")
-    public RedisUtil zuulRedisUtil(){
+    @Bean("userServiceRedisUtil")
+    public RedisUtil userServiceRedisUtil(){
         return new RedisUtil(redisTemplate);
     }
 

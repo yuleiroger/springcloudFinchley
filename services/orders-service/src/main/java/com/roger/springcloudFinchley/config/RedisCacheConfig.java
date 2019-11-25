@@ -3,7 +3,7 @@ package com.roger.springcloudFinchley.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.roger.springcloudFinchley.compnent.RedisProperties;
+import com.roger.springcloudFinchley.component.RedisProperties;
 import com.roger.springcloudFinchley.util.DesEncryptUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;

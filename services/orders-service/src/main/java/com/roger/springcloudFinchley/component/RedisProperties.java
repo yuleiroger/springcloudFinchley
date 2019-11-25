@@ -1,4 +1,4 @@
-package com.roger.springcloudFinchley.compnent;
+package com.roger.springcloudFinchley.component;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
