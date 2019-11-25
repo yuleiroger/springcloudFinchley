@@ -15,10 +15,8 @@ public class OrdersController {
 
     @GetMapping(value = "setSession")
     public Object setSession(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        String sessionValue = UUID.randomUUID().toString();
-        session.setAttribute("sessionValue",sessionValue);
-        return sessionValue;
+
+        return "success";
     }
 
     @GetMapping(value = "getSession")

@@ -12,8 +12,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class LogsController {
     @GetMapping(value = "getSession")
-    public Object getOrder(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        return session.getAttribute("user");
+    public Object getOrder(HttpSession session){
+        return session.getAttribute("test");
     }
 }
