@@ -40,7 +40,7 @@ public class GatewayFilter extends ZuulFilter implements Filter{
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         HttpSession session = request.getSession();
-        Object userNoObj = session.getAttribute("user");
+        Object userNoObj = session.getAttribute("sessionValue");
         if(userNoObj != null){
             log.info("session attribute=={}", userNoObj.toString());
         }
