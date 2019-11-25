@@ -40,7 +40,9 @@ public class GatewayFilter extends ZuulFilter implements Filter{
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         HttpSession session = request.getSession();
-        session.setAttribute("test","testvalue");
+
+        log.info("================");
+        log.info("session value===={}",session.getAttribute("sessionValue"));
         String ip = getIpAddr(request);
         String uri = request.getRequestURI();
 //        Set<String> keys = redisUtil.getKeys();

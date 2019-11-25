@@ -14,6 +14,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableZuulProxy
 @EnableRedisHttpSession
 public class ZuulApplication {
+    //https://www.cnblogs.com/nukill/p/11853591.html
     public static void main(String[] args) {
         SpringApplication.run(ZuulApplication.class, args);
     }
