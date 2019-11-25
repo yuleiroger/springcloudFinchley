@@ -20,6 +20,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -62,8 +63,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         }
         sentinelConfig.setSentinels(sentinels);
         sentinelConfig.setDatabase(redisProperties.getDatabase());
-        log.info("redis password ====:{}",redisProperties.getPassword());
         String password = DesEncryptUtils.decrypt(redisProperties.getPassword());
+        log.info("redis password ===={}",password);
         sentinelConfig.setPassword(RedisPassword.of(password)); //redis 密码
         return sentinelConfig;
     }
@@ -156,6 +157,11 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);// value序列化
         redisTemplate.setHashKeySerializer(stringSerializer);// Hash key序列化
         redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);// Hash value序列化
+    }
+
+    @Bean
+    public static ConfigureRedisAction configureRedisAction() {
+        return ConfigureRedisAction.NO_OP;
     }
 
 }
