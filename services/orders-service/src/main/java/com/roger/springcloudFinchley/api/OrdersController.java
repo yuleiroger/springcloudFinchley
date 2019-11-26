@@ -21,9 +21,6 @@ public class OrdersController {
         return sessionValue;
     }
 
-    @GetMapping(value = "getSession")
-    public String getSession(){
-        return "success";
-    }
+
 
 }
