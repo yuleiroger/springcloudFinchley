@@ -15,8 +15,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by yulei on 2019/11/10.
  */
-@Component
-
+//@Component
 public class ZkCustor {
     private CuratorFramework client = null;
     public static final String ZOOKEEPER_SERVER = "192.168.190.134:2181";
