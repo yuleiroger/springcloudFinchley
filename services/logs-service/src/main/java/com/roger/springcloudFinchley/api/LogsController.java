@@ -13,6 +13,6 @@ import javax.servlet.http.HttpSession;
 public class LogsController {
     @GetMapping(value = "getSession")
     public Object getOrder(HttpSession session){
-        return session.getAttribute("test");
+        return session.getAttribute("sessionValue");
     }
 }
