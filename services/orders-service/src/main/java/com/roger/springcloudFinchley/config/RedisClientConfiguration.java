@@ -8,9 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisSentinelConfiguration;
-import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
+import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
@@ -38,8 +37,8 @@ public class RedisClientConfiguration {
     }
 
     @Bean
-    public LettuceConnectionFactory lettuceConnectionFactory(RedisSentinelConfiguration redisSentinelConfiguration, LettuceClientConfiguration lettuceClientConfiguration) {
-        return new LettuceConnectionFactory(redisSentinelConfiguration, lettuceClientConfiguration);
+    public JedisConnectionFactory jedisConnectionFactory (RedisSentinelConfiguration redisSentinelConfiguration, JedisClientConfiguration jedisClientConfiguration) {
+        return new JedisConnectionFactory(redisSentinelConfiguration, jedisClientConfiguration);
     }
 
     /**
@@ -60,8 +59,9 @@ public class RedisClientConfiguration {
      * @return lettuceClientConfiguration
      */
     @Bean
-    public LettuceClientConfiguration lettuceClientConfiguration(GenericObjectPoolConfig genericObjectPoolConfig) {
-        return LettucePoolingClientConfiguration.builder()
+    public JedisClientConfiguration jedisClientConfiguration(GenericObjectPoolConfig genericObjectPoolConfig) {
+        return JedisClientConfiguration.builder()
+                .usePooling()
                 .poolConfig(genericObjectPoolConfig)
                 .build();
     }
