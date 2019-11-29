@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
  * Created by admin on 2019/10/11.
  */
 @SpringBootApplication
-@EnableEurekaClient
 @EnableAdminServer
 @EnableDiscoveryClient
 public class AdminApplication {
