@@ -16,6 +16,7 @@
         <module>products-service</module>
         <module>orders-service</module>
         <module>logs-service</module>
+        <module>admin-client</module>
     </modules>
 
 
