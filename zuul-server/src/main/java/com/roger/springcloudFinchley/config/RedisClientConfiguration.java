@@ -49,7 +49,7 @@ public class RedisClientConfiguration {
     @Bean
     public RedisSentinelConfiguration redisSentinelConfiguration(SentinelProperties sentinelProperties) {
         RedisSentinelConfiguration redisSentinelConfiguration = new RedisSentinelConfiguration(sentinelProperties.getMaster(), sentinelProperties.getHosts());
-        redisSentinelConfiguration.setPassword(RedisPassword.of("yulei"));
+        redisSentinelConfiguration.setPassword(RedisPassword.of("123456"));
         return redisSentinelConfiguration;
     }
 

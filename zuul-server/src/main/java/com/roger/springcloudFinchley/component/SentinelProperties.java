@@ -13,9 +13,9 @@ import java.util.Set;
  */
 @Component
 public class SentinelProperties {
-    @Value("${lettuce.sentinel.master}")
+    @Value("${sentinel.master}")
     private String master;
-    @Value("${lettuce.sentinel.nodes}")
+    @Value("${sentinel.nodes}")
     private String nodes;
 
     private Set<String> hosts;
@@ -30,23 +30,7 @@ public class SentinelProperties {
         return master;
     }
 
-    public void setMaster(String master) {
-        this.master = master;
-    }
-
-    public String getNodes() {
-        return nodes;
-    }
-
-    public void setNodes(String nodes) {
-        this.nodes = nodes;
-    }
-
     public Set<String> getHosts() {
         return hosts;
-    }
-
-    public void setHosts(Set<String> hosts) {
-        this.hosts = hosts;
     }
 }
