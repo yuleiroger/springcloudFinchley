@@ -20,6 +20,7 @@
         <module>core-java</module>
         <module>zookeeper-server</module>
         <module>test-redis</module>
+        <module>uua-server</module>
     </modules>
 
     <properties>
