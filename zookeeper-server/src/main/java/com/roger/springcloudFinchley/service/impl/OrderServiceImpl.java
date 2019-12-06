@@ -25,6 +25,7 @@ public class OrderServiceImpl implements OrderService{
             if (lock.acquire(10, TimeUnit.HOURS)){
                 try {
                     //TODO 实际业务处理
+                    System.out.println();
                 } finally {
                     lock.release();
                 }
@@ -32,6 +33,5 @@ public class OrderServiceImpl implements OrderService{
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 }

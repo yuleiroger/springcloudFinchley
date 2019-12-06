@@ -1,6 +1,9 @@
 spring:
   application:
     name: uaa-server
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/auth?useUnicode=true&char
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+    prefix: classpath:/templates/
+
