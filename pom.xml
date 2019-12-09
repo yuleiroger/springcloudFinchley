@@ -21,6 +21,7 @@
         <module>zookeeper-server</module>
         <module>test-redis</module>
         <module>uua-server</module>
+        <module>auth-service</module>
     </modules>
 
     <properties>
