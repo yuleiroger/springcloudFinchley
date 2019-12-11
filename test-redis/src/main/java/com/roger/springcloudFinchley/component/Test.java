@@ -4,6 +4,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -21,13 +22,17 @@ public class Test {
         validate(user);
     }
 
-    private static void validate(Object o){
+    private static String validate(Object o){
         ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
         Validator validator = vf.getValidator();
         Set<ConstraintViolation<Object>> set = validator.validate(o);
+        String validateResult = "";
         for (ConstraintViolation<Object> constraintViolation : set) {
+            validateResult = constraintViolation.getPropertyPath()+":"+constraintViolation.getMessage();
             System.out.println(constraintViolation.getPropertyPath()+":"+constraintViolation.getMessage());
+            break;
         }
+        return validateResult;
     }
 }
 
@@ -36,7 +41,8 @@ class User {
     @NotNull(message = "姓名不能为空")
     private String name;
 
-    @Min(value = 25 ,message = "年龄不能小于0")
+    @Min(value = 25 ,message = "年龄不能小于25")
+    @Max(value = 60, message = "")
     @NotNull(message = "age不能为空")
     private Integer age;
     @NotNull(message = "id不能为空")
