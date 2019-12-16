@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by yulei on 2019/12/14.
  */
+
 @Component
 @Mapper
 public interface UserMapper {
