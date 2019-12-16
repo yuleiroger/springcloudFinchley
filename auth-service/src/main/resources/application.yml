@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: uaa-server
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+    prefix: classpath:/templates/
+
