@@ -18,6 +18,24 @@ public class User implements UserDetails, Serializable {
     private String username;
     private String password;
     private List<Role> authorities;
+    private Long roleId;
+    private String roleName;
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
     public Long getId() {
         return id;
@@ -27,8 +45,18 @@ public class User implements UserDetails, Serializable {
         this.id = id;
     }
 
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
@@ -41,16 +69,6 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
         return null;
     }
 
